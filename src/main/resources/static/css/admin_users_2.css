@@ -1,0 +1,265 @@
+body{
+    margin: 0 auto;
+    width: 100%;
+}
+
+header{
+    width: 100%;
+    height: 50px;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    background-color: #3b3b3b;
+    color: white;
+}
+/*Класс главного дива*/
+.d-flex{
+    height: 800px;
+    background-color: #f8f9fa;
+    /*background-color: rgba(59, 59, 59, 0.34);*/
+}
+
+.mycontainer{
+    width: 200px;
+    display: flex;
+    background-color: white;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.mycontainer2{
+    width: 100%;
+    display: flex;
+    /*background-color: #f8f9fa;*/
+    height: 100%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.mycontainer3{
+    width: 100%;
+    display: inline-block;
+    background-color: white;
+    height: 100%;
+    margin: 0 auto;
+    /*padding: 15px;*/
+}
+
+.mycontainer4{
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+    background-color: #f8f9fa;
+    /*margin: 0 auto;*/
+    padding-top: 5px;
+
+    padding-left: 15px;
+    text-align: start;
+    border-top: 1px solid #cbcaca;
+    border-left: 1px solid #cbcaca;
+    border-right: 1px solid #cbcaca;
+}
+
+.mycontainer5{
+    width: 100%;
+    display: flex;
+    border: 1px solid #cbcaca;
+    vertical-align: middle;
+    background-color: white;
+    padding: 10px;
+    /*margin: 0 auto;*/
+}
+
+
+.mycontainer6{
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+    background-color: #f8f9fa;
+    /*margin: 0 auto;*/
+    padding-top: 5px;
+
+    padding-left: 15px;
+    text-align: start;
+    border-top: 1px solid #cbcaca;
+    border-left: 1px solid #cbcaca;
+    border-right: 1px solid #cbcaca;
+}
+
+.mycontainer7{
+    width: 100%;
+    border: 1px solid #cbcaca;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*padding: 15px;*/
+    /*margin: 0 auto;*/
+}
+
+.container-edit{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*padding: 15px;*/
+    /*margin: 0 auto;*/
+}
+
+.container-log{
+    /*width: 100px;*/
+    height: 100%;
+    display: flex;
+    margin-left: auto;
+    margin-right: 10px;
+    justify-content: center;
+}
+/*Класс белой колонки с кнопками*/
+.nav{
+    width: 100%;
+}
+
+/*Класс кнопок в белой колонке*/
+.nav-link{
+    height: 36px;
+    font-size: 10pt;
+    text-align: start;
+    vertical-align: middle;
+}
+
+.tab-content{
+    width: 100%;
+}
+
+table{
+    margin-top: 5px;
+    caption-side: top;
+    text-align: start;
+    width: 100%;
+}
+
+td{
+    border-top: 1px solid #cbcaca;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 50px;
+}
+th{
+    border-top: 1px solid #cbcaca;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 50px;
+}
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+caption{
+    border-collapse: collapse;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+/*input{*/
+/*    width: 150px;*/
+/*    height: 30px;*/
+/*}*/
+
+.form-label{
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.form-control{
+    width: 150px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.btn-success{
+    margin: 10px;
+}
+
+/*label input{*/
+/*    padding: 10px;*/
+/*    width: 150px;*/
+/*}*/
+/*!* Full-width input fields *!*/
+/*input[type=text], input[type=password] {*/
+/*    !*width: 100px;*!*/
+/*    height: 30px;*/
+/*    !*padding: 15px;*!*/
+/*    margin: auto;*/
+/*    display: inline-block;*/
+/*    border: none;*/
+/*    background: #f1f1f1;*/
+/*}*/
+
+/*input[type=text]:focus, input[type=password]:focus {*/
+/*    !*width: 100px;*!*/
+/*    !*height: 30px;*!*/
+/*    background-color: #ddd;*/
+/*    outline: none;*/
+/*}*/
+
+.btn-info, .btn-danger, .btn-secondary, .btn-primary{
+    color: white;
+    padding: 0.075rem 0.275rem;
+}
+
+h3{
+    margin-bottom: 15px;
+}
+
+.container-header{
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.container-header2{
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 0;
+    margin-right: 5px;
+}
+
+.button-logout{
+    display: inline-block;
+    background-color: #3b3b3b;
+    border: 0;
+    color: lightgray;
+}
+
+select{
+    margin-bottom: 5px;
+    width: 150px;
+}
+option{
+    font-size: 14px;
+}
+
+ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding-left: 0;
+}
+ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 3px; /* Отступ слева */
+}
