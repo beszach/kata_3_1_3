@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Please Log In</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="mycont">
+<div class="mycont2">
+  <h4>Please sign in</h4>
+</div>
+
+<div th:if="${param.error}">
+  Invalid username and password.</div>
+<div th:if="${param.logout}">
+  You have been logged out.</div>
+<form class="myform" th:action="@{/login}" method="post">
+  <div>
+    <input class="form-control" type="text" name="username" placeholder="Email address"/>
+  </div>
+  <div>
+    <input class="form-control" type="password" name="password" placeholder="Password"/>
+  </div>
+  <input class="btn btn-primary" type="submit" value="Sign in" />
+</form>
+</div>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>

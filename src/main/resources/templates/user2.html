@@ -13,15 +13,16 @@
 <!--  <link rel="stylesheet" type="text/css" href="admin_users_2.css">-->
 </head>
 <body>
-<header>
-  <div id="header_user_auth_email" class="container-header">
+<header th:object="${authorize_user}">
+  <div class="container-header" th:text="*{email}">
     <!--        admin@mail.ru-->
   </div>
   <div class="container-header2">
     with roles:
   </div>
   <div class="container-header2">
-    <ul id="header_user_auth_roleList" class="hr">
+    <ul class="hr">
+      <li th:each="role : *{roleList}" th:text="${role.getRoleName().replaceAll('ROLE_', '')}"></li>
     </ul>
   </div>
 
@@ -71,14 +72,15 @@
                 <th>Email</th>
                 <th>Role</th>
               </tr>
-              <tr>
-                <td id="auth_user_id"></td>
-                <td id="auth_user_Firstname"></td>
-                <td id="auth_user_Lastname">admin</td>
-                <td id="auth_user_Age">1</td>
-                <td id="auth_user_Email">admin@mail.ru</td>
-                <td>
-                  <ul id="auth_user_roles" class="hr">
+              <tr th:object="${authorize_user}">
+                <td th:text="${authorize_user.id}"></td>
+                <td th:text="${authorize_user.firstName}"></td>
+                <td th:text="${authorize_user.lastName}">admin</td>
+                <td th:text="${authorize_user.age}">1</td>
+                <td th:text="${authorize_user.email}">admin@mail.ru</td>
+                <td th:if="${authorize_user.roleList != null}">
+                  <ul class="hr">
+                    <li th:each="role : ${authorize_user.roleList}" th:text="${role.getRoleName().replaceAll('ROLE_', '')}"></li>
                   </ul>
                 </td>
               </tr>
@@ -93,6 +95,6 @@
 
 <script th:src="@{/js/popper.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/user.js}"></script>
+<script th:src="@{/js/myScript.js}"></script>
 </body>
 </html>

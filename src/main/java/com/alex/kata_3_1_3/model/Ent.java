@@ -3,7 +3,6 @@ package com.alex.kata_3_1_3.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
 
 @Entity
 public class Ent {

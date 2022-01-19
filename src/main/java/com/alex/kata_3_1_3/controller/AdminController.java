@@ -69,4 +69,18 @@ public class AdminController {
         return "admin_users";
     }
 
+    @GetMapping("/test")
+    public String getTable2(ModelMap modelMap){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        log.info("Info about user: "+user.toString());
+        modelMap.addAttribute("authorize_user", user);
+        modelMap.addAttribute("new_user", new User());
+        modelMap.addAttribute("edit_user", new User());
+        modelMap.addAttribute("userService", userService);
+        modelMap.addAttribute("roles", roleService.getAll());
+        modelMap.addAttribute("users", userService.getAll());
+        return "admin_users2";
+    }
+
 }

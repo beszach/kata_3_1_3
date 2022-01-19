@@ -44,13 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(filter, CsrfFilter.class);
 
         http.cors().disable()
-                .csrf().disable().httpBasic().and().authorizeRequests()
+                .csrf().disable().httpBasic().and()
+                .authorizeRequests()
                 .antMatchers("/").hasAnyRole("ADMIN")
                 .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .and().formLogin().successHandler(successUserHandler)
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-               .permitAll();
+                .and().formLogin().loginPage("/login").successHandler(successUserHandler)
+                .and().logout()
+                .permitAll();
+
     }
 
     @Bean("passwordEncoder")

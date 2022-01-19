@@ -1,17 +1,16 @@
 package com.alex.kata_3_1_3.controller;
 
+
 import com.alex.kata_3_1_3.exception_handling.NoSuchUserException;
-import com.alex.kata_3_1_3.exception_handling.UserIncorrectData;
-import com.alex.kata_3_1_3.model.Ent;
 import com.alex.kata_3_1_3.model.Role;
 import com.alex.kata_3_1_3.model.User;
 import com.alex.kata_3_1_3.service.RoleService;
 import com.alex.kata_3_1_3.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,6 +53,12 @@ public class MyRestController {
     @GetMapping("/roles")
     public List<Role> getRoles(){
         return roleService.getAll();
+    }
+
+    @GetMapping("/auth_user")
+    public User authUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (User) authentication.getPrincipal();
     }
 
     @PostMapping("/users")
