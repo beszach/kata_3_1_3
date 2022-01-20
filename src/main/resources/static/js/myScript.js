@@ -491,11 +491,11 @@ function validateEditUser(){
         alert('Поле Email не должно быть пустым')
         return false;
     }
-    var modalPasswordInput = document.getElementById('Password_edit');
-    if(modalPasswordInput.value === ''){
-        alert('Поле Password не должно быть пустым')
-        return false;
-    }
+    // var modalPasswordInput = document.getElementById('Password_edit');
+    // if(modalPasswordInput.value === ''){
+    //     alert('Поле Password не должно быть пустым')
+    //     return false;
+    // }
     var modalRolesSelector = document.getElementById('roles');
     var options = modalRolesSelector.selectedOptions;
     if(options.length === 0){

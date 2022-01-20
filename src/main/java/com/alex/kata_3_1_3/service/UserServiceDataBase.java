@@ -34,7 +34,11 @@ public class UserServiceDataBase implements UserService {
 
     @Override
     public void update(User userUpdated) {
-        userUpdated.setPassword(passwordEncoder.encode(userUpdated.getPassword()));
+        if(userUpdated.getPassword().equals("")){
+            userUpdated.setPassword(getById(userUpdated.getId()).getPassword());
+        } else {
+            userUpdated.setPassword(passwordEncoder.encode(userUpdated.getPassword()));
+        }
         userRepository.saveAndFlush(userUpdated);
         log.info("Update user: {}",  userUpdated);
     }

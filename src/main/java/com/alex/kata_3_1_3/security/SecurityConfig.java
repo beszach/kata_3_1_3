@@ -43,16 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setForceEncoding(true);
         http.addFilterBefore(filter, CsrfFilter.class);
 
-        http.cors().disable()
+                http.cors().disable()
                 .csrf().disable().httpBasic().and()
                 .authorizeRequests()
-                .antMatchers("/").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/").authenticated()
                 .and().formLogin().loginPage("/login").successHandler(successUserHandler)
                 .and().logout()
                 .permitAll();
-
     }
 
     @Bean("passwordEncoder")

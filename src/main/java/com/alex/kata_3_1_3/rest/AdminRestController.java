@@ -7,15 +7,18 @@ import com.alex.kata_3_1_3.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 @Log4j2
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminRestController {
 
     @Autowired
@@ -27,13 +30,6 @@ public class AdminRestController {
         log.info("Rest all users: "+allUsers);
         return ResponseEntity.ok(allUsers);
     }
-
-//    @GetMapping(value = "/users", produces ="application/json")
-//    public List<User> getUsers(){
-//        List<User> allUsers = userService.getAll();
-//        log.info("Rest all users: "+allUsers);
-//        return allUsers;
-//    }
 
     @GetMapping("/users/{id}")
     public User getUser(@PathVariable long id){
