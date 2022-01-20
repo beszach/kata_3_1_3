@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UsersController {
 
     @GetMapping("/user")
-    public String user(ModelMap modelMap) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = (User) authentication.getPrincipal();
-        log.info("Info about user: "+user.toString());
-        modelMap.addAttribute("authorize_user", user);
+    public String user() {
+        log.info("Загрузка страницы /user");
         return "user";
     }
 

@@ -40,7 +40,7 @@ public class User implements UserDetails {
    private String lastName;
 
    @Email
-   @Column(name = "email", unique = false, nullable = false)
+   @Column(name = "email", unique = true, nullable = false)
    @JsonProperty("email")
    @JsonPropertyOrder("4")
    private String email;

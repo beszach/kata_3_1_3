@@ -3,6 +3,15 @@ window.onload = function (){
 }
 
 let url = 'http://localhost:8080/api/users';
+
+async function getAuthUser(){
+    let urlAuth = 'http://localhost:8080/api/auth_user';
+    let responseAuth = await fetch(urlAuth);
+    let userAuth = await responseAuth.json();
+
+    return JSON.stringify(userAuth);
+}
+
 async function initValues(){
 
     let urlAuth = 'http://localhost:8080/api/auth_user';
@@ -27,24 +36,65 @@ async function initValues(){
     }
 }
 
+
+
 async function initUserInfo() {
     let urlAuth = 'http://localhost:8080/api/auth_user';
     let responseAuth = await fetch(urlAuth);
     let userAuth = await responseAuth.json();
 
-    document.getElementById("auth_user_id").innerHTML = userAuth.id;
-    document.getElementById("auth_user_Firstname").innerHTML = userAuth.firstName;
-    document.getElementById("auth_user_Lastname").innerHTML = userAuth.lastName;
-    document.getElementById("auth_user_Age").innerHTML = userAuth.age;
-    document.getElementById("auth_user_Email").innerHTML = userAuth.email;
+    let id = userAuth.id;
+    let urlAuth2 = 'http://localhost:8080/api/users/'+id;
+    let responseAuth2 = await fetch(urlAuth2);
+    let userAuth2 = await responseAuth2.json();
+
+    document.getElementById("auth_user_id").innerHTML = userAuth2.id;
+    document.getElementById("auth_user_Firstname").innerHTML = userAuth2.firstName;
+    document.getElementById("auth_user_Lastname").innerHTML = userAuth2.lastName;
+    document.getElementById("auth_user_Age").innerHTML = userAuth2.age;
+    document.getElementById("auth_user_Email").innerHTML = userAuth2.email;
     let auth_user_roles = document.getElementById("auth_user_roles");
-    let roleList = userAuth.roleList;
+
+    auth_user_roles.innerHTML = ''
+    let roleList = userAuth2.roleList;
     for(let i = 0; i < roleList.length; i++){
         let rowRole = document.createElement('li');
         rowRole.appendChild(document.createTextNode(roleList[i].roleName.replace("ROLE_", "")))
         auth_user_roles.appendChild(rowRole)
     }
 
+}
+
+function updateInfoAuthUser(authUserJson){
+
+    alert("here")
+
+    let userAuth = JSON.parse(authUserJson);
+
+
+    document.getElementById("auth_user_id").innerHTML = userAuth.id;
+    document.getElementById("auth_user_Firstname").innerHTML = userAuth.firstName;
+    document.getElementById("auth_user_Lastname").innerHTML = userAuth.lastName;
+    document.getElementById("auth_user_Age").innerHTML = userAuth.age;
+    document.getElementById("auth_user_Email").innerHTML = userAuth.email;
+
+    let header_user_auth_email = document.getElementById("header_user_auth_email");
+    header_user_auth_email.innerHTML = userAuth.email;
+
+    let auth_user_roles = document.getElementById("auth_user_roles");
+    let header_user_auth_roleList = document.getElementById("header_user_auth_roleList");
+
+    header_user_auth_roleList.innerHTML = '';
+    auth_user_roles.innerHTML = '';
+
+    let roleList = userAuth.roleList;
+
+    for(let i = 0; i < roleList.length; i++){
+        let rowRole = document.createElement('li');
+        rowRole.appendChild(document.createTextNode(roleList[i].roleName.replace("ROLE_", "")))
+        header_user_auth_roleList.appendChild(rowRole)
+        auth_user_roles.appendChild(rowRole)
+    }
 }
 
 function addRow(obj){
@@ -188,13 +238,8 @@ exampleModal.addEventListener('show.bs.modal', async function (event) {
         modalRolesSelector.options[i] = newOption;
     }
 
-
     buttonEdit.onclick = async function (){
         if(validateEditUser()){
-            // document.getElementById('exampleModal').className = "modal fade";
-            // document.getElementById('exampleModal').style.display = :
-            // document.body.className = '';
-            // document.body.style.overflow = 'visible';
             var myModalEl = document.getElementById('butClose');
             myModalEl.click();
             var options = modalRolesSelector.selectedOptions;
@@ -329,8 +374,34 @@ async function updateRow(indexRow, buttonId, id, firstname, lastname, age, email
         body: JSON.stringify(user)
     });
 
-    var butEd = document.getElementById('but');
-    butEd.setAttribute('data-bs-dismiss', 'modal')
+    let authUserJSON = getAuthUser();
+    let authUser = JSON.parse(await authUserJSON);
+
+    let userAuth = await response.json();
+
+    if(authUser.id+'' === user.id+''){
+
+
+        let header_user_auth_email = document.getElementById("header_user_auth_email");
+        header_user_auth_email.innerHTML = userAuth.email;
+
+
+        let header_user_auth_roleList = document.getElementById("header_user_auth_roleList");
+
+        header_user_auth_roleList.innerHTML = '';
+
+
+        let roleList = userAuth.roleList;
+
+        for(let i = 0; i < roleList.length; i++){
+            let rowRole = document.createElement('li');
+            let rowRole2 = document.createElement('li');
+            rowRole.appendChild(document.createTextNode(roleList[i].roleName.replace("ROLE_", "")))
+            rowRole2.appendChild(document.createTextNode(roleList[i].roleName.replace("ROLE_", "")))
+            header_user_auth_roleList.appendChild(rowRole)
+
+        }
+    }
 }
 
 async function deleteRow(rowId, id){

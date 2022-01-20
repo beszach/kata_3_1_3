@@ -187,28 +187,6 @@ caption{
     margin: 10px;
 }
 
-/*label input{*/
-/*    padding: 10px;*/
-/*    width: 150px;*/
-/*}*/
-/*!* Full-width input fields *!*/
-/*input[type=text], input[type=password] {*/
-/*    !*width: 100px;*!*/
-/*    height: 30px;*/
-/*    !*padding: 15px;*!*/
-/*    margin: auto;*/
-/*    display: inline-block;*/
-/*    border: none;*/
-/*    background: #f1f1f1;*/
-/*}*/
-
-/*input[type=text]:focus, input[type=password]:focus {*/
-/*    !*width: 100px;*!*/
-/*    !*height: 30px;*!*/
-/*    background-color: #ddd;*/
-/*    outline: none;*/
-/*}*/
-
 .btn-info, .btn-danger, .btn-secondary, .btn-primary{
     color: white;
     padding: 0.075rem 0.275rem;

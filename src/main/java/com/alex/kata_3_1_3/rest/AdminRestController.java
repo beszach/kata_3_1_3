@@ -1,10 +1,8 @@
-package com.alex.kata_3_1_3.controller;
-
+package com.alex.kata_3_1_3.rest;
 
 import com.alex.kata_3_1_3.exception_handling.NoSuchUserException;
 import com.alex.kata_3_1_3.model.Role;
 import com.alex.kata_3_1_3.model.User;
-import com.alex.kata_3_1_3.service.RoleService;
 import com.alex.kata_3_1_3.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +16,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @Log4j2
-public class MyRestController {
+public class AdminRestController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    RoleService roleService;
 
     @GetMapping(value = "/users", produces ="application/json")
     public ResponseEntity<List<User>> getUsers(){
@@ -50,17 +45,6 @@ public class MyRestController {
         return user;
     }
 
-    @GetMapping("/roles")
-    public List<Role> getRoles(){
-        return roleService.getAll();
-    }
-
-    @GetMapping("/auth_user")
-    public User authUser(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return (User) authentication.getPrincipal();
-    }
-
     @PostMapping("/users")
     public User addUser(@RequestBody User user){
         log.info("Rest add user: "+user);
@@ -80,5 +64,4 @@ public class MyRestController {
         userService.delete(id);
         return "user with id: "+id+" was deleted";
     }
-
 }
