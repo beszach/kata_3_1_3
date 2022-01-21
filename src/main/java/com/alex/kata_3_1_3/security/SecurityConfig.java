@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setForceEncoding(true);
         http.addFilterBefore(filter, CsrfFilter.class);
 
-                http.cors().disable()
+        http.cors().disable()
                 .csrf().disable().httpBasic().and()
                 .authorizeRequests()
                 .antMatchers("/").authenticated()

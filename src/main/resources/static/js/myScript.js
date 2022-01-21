@@ -112,10 +112,9 @@ function addRow(obj){
     var td5 = document.createElement("TD")
     td5.appendChild (document.createTextNode(obj.email))
     var td6 = document.createElement("TD")
-    // td6.appendChild (document.createTextNode(obj.roleList[0].roleName+''))
     var td7 = document.createElement("TD")
     var td8 = document.createElement("TD")
-    // td8.appendChild (document.createTextNode('Delete'))
+
 
 
     let listRoles = document.createElement('ul');
@@ -201,13 +200,9 @@ exampleModal.addEventListener('show.bs.modal', async function (event) {
     var password = button.getAttribute('data-bs-password')
     var buttonId = button.getAttribute('data-bs-buttonId')
     var roleListJSON = button.getAttribute('data-bs-roleList')
-    // If necessary, you could initiate an AJAX request here
-    // and then do the updating in a callback.
-    //
-    // Update the modal's content.
+
     var modalTitle = exampleModal.querySelector('.modal-title')
-    // var modalBodyInput = exampleModal.querySelector('.modal-body input')
-    // var modalh4= exampleModal.querySelector('.modal-body h4')
+
 
     var buttonEdit= exampleModal.querySelector('.btn-primary')
     var modalIdInput = exampleModal.querySelector('.userId input')
@@ -274,13 +269,7 @@ exampleModalDelete.addEventListener('show.bs.modal', async function (event) {
     var buttonId = button.getAttribute('data-bs-buttonId')
     var roleListJSON = button.getAttribute('data-bs-roleList')
 
-    // If necessary, you could initiate an AJAX request here
-    // and then do the updating in a callback.
-    //
-    // Update the modal's content.
     var modalTitle = exampleModalDelete.querySelector('.modal-title')
-    // var modalBodyInput = exampleModal.querySelector('.modal-body input')
-    // var modalh4= exampleModal.querySelector('.modal-body h4')
 
     var buttonEdit= exampleModalDelete.querySelector('.btn-primary')
     var modalIdInput = exampleModalDelete.querySelector('.userId input')
@@ -298,17 +287,6 @@ exampleModalDelete.addEventListener('show.bs.modal', async function (event) {
     modalLastnameInput.value = lastname
     modalAgeInput.value = age
     modalEmailInput.value = email
-
-    // let user = {};
-    // user.id = id;
-    // user.firstName = firstname;
-    // user.lastName = lastname;
-    // user.age = age;
-    // user.email = email;
-    // user.password = password;
-    // user.roleList = roleList;
-
-    // modalPasswordInput.value = password
 
     for(var i = 0; i < allRoles.length; i++){
         var text = allRoles[i].roleName.replace("ROLE_", "");
@@ -491,11 +469,7 @@ function validateEditUser(){
         alert('Поле Email не должно быть пустым')
         return false;
     }
-    // var modalPasswordInput = document.getElementById('Password_edit');
-    // if(modalPasswordInput.value === ''){
-    //     alert('Поле Password не должно быть пустым')
-    //     return false;
-    // }
+
     var modalRolesSelector = document.getElementById('roles');
     var options = modalRolesSelector.selectedOptions;
     if(options.length === 0){
